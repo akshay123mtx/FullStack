@@ -1,0 +1,76 @@
+
+<!-- Product page -->
+
+<% include ./partials/header%>
+
+
+<div class="ui main text container" style="padding-top: 8%">
+  <div class="ui top attached segment">
+    <% if(currentUser && currentUser.role==='admin'){%> <%
+    blogs.forEach(function(blogs){ %>
+
+    <div class="ui top attached segment">
+      <div class="always">
+        <div class="content"><h1 style="font-weight: bold;font-family:'Franklin Gothic Medium';"><%= blogs.title %></h1></div>
+        <div class="item" style="padding-top: 2%">
+          <img src="<%=blogs.image%>" /><br>
+        </div>
+        <div class="description">
+            <p>Price: <b><%=blogs.cost%> $</b></p>   
+        </div>
+        <div class="description">
+            <em><p>Created By: </em><b><%=blogs.author.username%></b></p>   
+        </div>
+        <div class="meta" style="padding-top: 2%;"><span><em><%=blogs.created.toDateString()%></em></span></div>
+        
+        <form
+          style="display: inline"
+          action="/blogs/<%= blogs._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+    <%})%> <%}%> <% if(currentUser && currentUser.role==='seller'){%> <%
+    blogs.forEach(function(blogs){ %>
+
+    <div class="ui top attached segment">
+      <div class="always">
+        <div class="content"><h1 style="font-weight: bold;font-family:'Franklin Gothic Medium';"><%= blogs.title %></h1></div>
+        <div class="item" style="padding-top: 2%">
+          <img src="<%=blogs.image%>" />
+        </div><br>
+        <div class="description">
+            <p>Price: <b><%=blogs.cost%> $</b></p>  
+        </div>
+        <div class="description">
+            <em><p>Created By: </em><b><%=blogs.author.username%></b></p>
+        </div>
+        <div class="meta" style="padding-top: 2%">
+          <span><em><%=blogs.created.toDateString()%></em></span>
+        </div>
+      </div>
+    </div>
+    <%})%> <%} if(!currentUser){%> <% blogs.forEach(function(blogs){ %>
+
+    <div class="ui top attached segment">
+      <div class="always">
+        <div class="content"><h1 style="font-weight: bold;font-family:'Franklin Gothic Medium';"><%= blogs.title %></h1></div>
+        <div class="item" style="padding-top: 2%">
+          <img src="<%=blogs.image%>" />
+        </div><br>
+        <div class="description">
+            <p>Price: <b><%=blogs.cost%> $</b></p>  
+        </div>
+        <div class="description">
+            <em><p>Created By: </em><b><%=blogs.author.username%></b></p>
+        </div>
+        <div class="meta" style="padding-top: 2%">
+          <span><em><%=blogs.created.toDateString()%></em></span>
+        </div>
+      </div>
+    </div>
+    <%})%> <%}%>
+  </div>
+</div>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bosotstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+      html {
+        height: 100%;
+      }
+
+      #akki {
+        color: black;
+      }
+      #y {
+        text-align: center;
+        padding-top: 15%;
+        color: blue;
+      }
+      #content {
+        color: white;
+        text-align: center;
+        padding-top: 10%;
+        text-shadow: 0px 4px 3px #008080;
+      }
+      h1 {
+        font-weight: 600;
+        font-size: 4em;
+      }
+      hr {
+        border-color: black;
+        width: 600px;
+      }
+
+      #frmCheckPassword {
+        border-top: #f0f0f0 2px solid;
+        background: #808080;
+        padding: 10px;
+      }
+
+      .demoInputBox {
+        padding: 7px;
+        border: #f0f0f0 1px solid;
+        border-radius: 4px;
+      }
+
+      #password-strength-status {
+        padding: 5px 10px;
+        color: #ffffff;
+        border-radius: 4px;
+        margin-top: 5px;
+      }
+
+      .medium-password {
+        background-color: #b7d60a;
+        border: #bbb418 1px solid;
+      }
+
+      .weak-password {
+        background-color: #ce1d14;
+        border: #aa4502 1px solid;
+      }
+
+      .strong-password {
+        background-color: #12cc1a;
+        border: #0fa015 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#" style="color: #ff1493"
+            ><img
+              style="padding-top: 0%"
+              src="http://icons.iconarchive.com/icons/shaunkleyn/phlat-blue-folders/64/Groups-icon.png"
+          /></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="/blogs"
+                ><i class="fa fa-home"></i>Products<span class="sr-only"
+                  >(current)</span
+                ></a
+              >
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if(!currentUser) {%>
+            <li class="active">
+              <a href="/register"><i class="fa fa-user-plus"></i> SignUp</a>
+            </li>
+            <li class="active">
+              <a href="/login"><i class="fa fa-user"></i> LogIn</a>
+            </li>
+            <%}%> <% if(currentUser) {%>
+            <li class="active"><a href="/logout"><LogOut</a></li>
+            <%}%> <% if(currentUser) {%>
+            <li>
+              <strong style="color: white"><%= currentUser.username %></strong>
+            </li>
+            <%}%>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+      <% if(success && success.length>0){ %>
+      <div class="alert alert-success" role="alert"><%= success %></div>
+      <% } %> <% if(error && error.length>0){ %>
+      <div class="alert alert-danger" role="alert"><%= error %></div>
+      <% } %>
+    </div>
+  </body>
+</html>

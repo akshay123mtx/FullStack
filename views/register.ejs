@@ -1,0 +1,71 @@
+<% include ./partials/layout%>
+
+<!-- REGISTER NEW SELLER -->
+
+<div class="container">
+  <div class="row">
+    <h1 style="padding-left: 40%">SignUp</h1>
+    <hr />
+    <div style="width: 20%; margin: 0 auto">
+      <form name="form1" action="/register" method="POST">
+        <p>
+          <input
+            class="thumbnail"
+            type="text"
+            name="username"
+            placeholder="username"
+          />
+        </p>
+
+        <select class="thumbnail">
+          <option class="thumbnail" type="text" name="role">seller</option>
+          <!-- <option  class="thumbnail" type="text" name="role">admin</option> -->
+        </select>
+        <p name="frmCheckPassword" id="frmCheckPassword">
+          <input
+            class="thumbnail"
+            type="password"
+            name="password"
+            placeholder="password"
+            id="password"
+            onKeyUp="checkPasswordStrength();"
+          />
+          <div id="password-strength-status"></div>
+        </p>
+        <p></p>
+        <p class="full">
+          <button
+            type="submit"
+            class="btn btn-info"
+          >
+            Submit
+          </button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  function checkPasswordStrength(){
+    var number = /([0-9])/;
+    var alphabets = /([a-zA-Z])/;
+    var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+    if ($('#password').val().length < 6) {
+        $('#password-strength-status').removeClass();
+        $('#password-strength-status').addClass('weak-password');
+        $('#password-strength-status').html("Weak (should be atleast 6 characters.)");
+    } else {
+        if ($('#password').val().match(number) && $('#password').val().match(alphabets) && $('#password').val().match(special_characters)) {
+            $('#password-strength-status').removeClass();
+            $('#password-strength-status').addClass('strong-password');
+            $('#password-strength-status').html("Strong");
+        } else {
+            $('#password-strength-status').removeClass();
+            $('#password-strength-status').addClass('medium-password');
+            $('#password-strength-status').html("Medium (should include alphabets, numbers and special characters.)");
+        }
+    }
+}
+</script>

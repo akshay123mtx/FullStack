@@ -1,0 +1,35 @@
+<% include ./partials/layout%>
+
+<!-- LOGIN PAGE -->
+
+<div class="container">
+  <div class="row">
+    <h1 style="padding-left: 40%">LogIn</h1>
+    <hr />
+    <div style="width: 23%; margin: 0 auto">
+      <form action="/login" method="POST">
+        <p>
+          <input
+            class="thumbnail"
+            type="text"
+            name="username"
+            placeholder="username"
+          />
+        </p>
+
+        <p>
+          <input
+            class="thumbnail"
+            type="password"
+            name="password"
+            placeholder="password"
+          />
+        </p>
+        <p></p>
+        <p class="full">
+          <button type="submit" class="btn btn-info">Submit</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
